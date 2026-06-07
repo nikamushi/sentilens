@@ -1,0 +1,2 @@
+// Custom hooks folder for SentiLens
+// Example usage: import useDashboard from '../hooks/useDashboard';
