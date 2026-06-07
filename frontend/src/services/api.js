@@ -14,9 +14,9 @@ export const analyzeSentiment = async (reviewText) => {
   return response.data;
 };
 
-export const getHistory = async (search = '', page = 1, limit = 10) => {
+export const getHistory = async (search = '', page = 1, limit = 10, sentiment = '') => {
   const response = await api.get('/history', {
-    params: { search, page, limit },
+    params: { search, page, limit, sentiment: sentiment || undefined },
   });
   return response.data;
 };

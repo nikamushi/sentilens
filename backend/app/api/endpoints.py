@@ -66,6 +66,7 @@ def analyze_review(payload: ReviewRequest, db: Session = Depends(get_db)):
 @router.get("/history", response_model=HistoryResponse)
 def get_analysis_history(
     search: Optional[str] = Query(None, description="Cari teks ulasan"),
+    sentiment: Optional[str] = Query(None, description="Filter sentimen (Positif, Netral, Negatif)"),
     page: int = Query(1, ge=1, description="Nomor halaman"),
     limit: int = Query(10, ge=1, le=100, description="Jumlah item per halaman"),
     db: Session = Depends(get_db)
@@ -73,6 +74,8 @@ def get_analysis_history(
     query = db.query(AnalysisModel)
     if search:
         query = query.filter(AnalysisModel.review_text.ilike(f"%{search}%"))
+    if sentiment:
+        query = query.filter(AnalysisModel.predicted_sentiment == sentiment)
         
     total = query.count()
     pages = (total + limit - 1) // limit if total > 0 else 1
