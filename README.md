@@ -1,14 +1,14 @@
-# 🔍 SentiLens - Sentiment Analysis Platform
+# SentiLens - Sentiment Analysis Platform
 
 **Tagline:** *Turning Reviews into Insights.*
 
 SentiLens adalah aplikasi web berbasis Natural Language Processing (NLP) yang digunakan untuk menganalisis sentimen ulasan produk berbahasa Indonesia. Sistem memanfaatkan teknik preprocessing teks, TF-IDF Vectorization, dan algoritma **Logistic Regression** untuk mengklasifikasikan ulasan ke dalam kategori **Positif**, **Netral**, atau **Negatif**.
 
-## 🎯 Problem Statement
+## Problem Statement
 
 Ulasan produk merupakan sumber informasi penting bagi pelanggan maupun penjual. Namun, jumlah ulasan yang terus bertambah membuat proses analisis secara manual menjadi tidak efisien. Diperlukan sebuah sistem yang mampu melakukan analisis sentimen secara otomatis sehingga opini pengguna dapat dipahami dengan cepat, akurat, dan terstruktur.
 
-## ✨ Fitur Utama
+## Fitur Utama
 
 ### In Scope (MVP)
 - **Dashboard**: Menampilkan ringkasan aplikasi, statistik sentimen, dan distribusi sentimen dengan Summary Cards dan Sentiment Distribution Chart
@@ -27,7 +27,7 @@ Ulasan produk merupakan sumber informasi penting bagi pelanggan maupun penjual. 
 - Integrasi layanan AI eksternal
 - Perbandingan banyak model Machine Learning
 
-## 🏗️ Arsitektur Sistem
+## Arsitektur Sistem
 
 ```
 sentilens/
@@ -47,7 +47,7 @@ sentilens/
         └── services/     # API Service Layer
 ```
 
-## 🚀 Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 ### Backend
 - **FastAPI** - Modern Python web framework
@@ -76,7 +76,7 @@ sentilens/
   - Recall: **87.99%**
   - F1-Score: **84.71%**
 
-## 📋 Prerequisites
+## Prerequisites
 
 Pastikan sistem Anda telah menginstall:
 
@@ -84,7 +84,7 @@ Pastikan sistem Anda telah menginstall:
 - Node.js 16 atau lebih tinggi
 - npm atau yarn package manager
 
-## ⚙️ Instalasi dan Setup
+## Instalasi dan Setup
 
 ### 1. Clone Repository
 
@@ -123,7 +123,7 @@ cd frontend
 npm install
 ```
 
-## 🎯 Menjalankan Aplikasi
+## Menjalankan Aplikasi
 
 ### Backend Server
 
@@ -145,7 +145,7 @@ npm run dev
 
 Aplikasi akan berjalan di: `http://localhost:5173`
 
-## � NLP Pipeline
+## NLP Pipeline
 
 Sistem menggunakan pipeline NLP berikut untuk memproses teks:
 
@@ -167,7 +167,7 @@ Logistic Regression (classification)
 Sentiment Prediction (Positif/Netral/Negatif)
 ```
 
-## �📚 API Endpoints
+## API Endpoints
 
 ### Base URL: `http://127.0.0.1:8000/api`
 
@@ -240,7 +240,7 @@ GET /api/evaluation
 }
 ```
 
-## 🤖 Training Model
+## Training Model
 
 Jika Anda ingin melatih ulang model dengan dataset baru:
 
@@ -258,7 +258,7 @@ Model yang telah dilatih akan disimpan di folder `backend/models/`:
 - `tfidf_vectorizer.joblib` - TF-IDF vectorizer
 - `metrics.json` - Evaluation metrics
 
-## 📁 Struktur Database
+## Struktur Database
 
 Aplikasi menggunakan **SQLite** database (`sentilens.db`) dengan skema:
 
@@ -271,7 +271,7 @@ Aplikasi menggunakan **SQLite** database (`sentilens.db`) dengan skema:
 | confidence_score | Float | Prediction Confidence |
 | analyzed_at | DateTime | Analysis Timestamp |
 
-## 🎨 Fitur Frontend
+## Fitur Frontend
 
 ### Navigation Structure
 ```
@@ -320,7 +320,7 @@ Dashboard
 - F1 Score
 - Confusion Matrix
 
-## 🔧 Konfigurasi
+## Konfigurasi
 
 ### Backend Configuration (main.py)
 - Server: `127.0.0.1:8000`
@@ -332,14 +332,14 @@ Dashboard
 - Port: `5173`
 - Proxy: Dikonfigurasi untuk backend API
 
-## 🎯 Target Users
+## Target Users
 
 - Mahasiswa
 - Dosen
 - Peneliti
 - Pengguna yang ingin memahami sentimen ulasan produk
 
-## 📊 Dataset
+## Dataset
 
 ### Dataset Type
 Dataset Sentiment Analysis Bahasa Indonesia yang telah memiliki label sentimen.
@@ -356,7 +356,7 @@ Dataset Sentiment Analysis Bahasa Indonesia yang telah memiliki label sentimen.
 - Missing Value Handling
 - Dataset Validation
 
-## 🏗️ Architecture Style
+## Architecture Style
 
 ### Frontend
 - Multi-Page Web Application
@@ -370,7 +370,7 @@ Dataset Sentiment Analysis Bahasa Indonesia yang telah memiliki label sentimen.
 ### Database
 - Relational Database (SQLite)
 
-## 📝 Development Notes
+## Development Notes
 
 ### Code Quality
 - Backend menggunakan type hints Python dengan Pydantic validation
@@ -386,7 +386,7 @@ Dataset Sentiment Analysis Bahasa Indonesia yang telah memiliki label sentimen.
 - Responsive design
 - Dark mode compatible
 
-## 🔒 Security Considerations
+## Security Considerations
 
 ### Input Validation
 - Menggunakan Pydantic Validation
@@ -402,23 +402,17 @@ Dataset Sentiment Analysis Bahasa Indonesia yang telah memiliki label sentimen.
 - Tidak menyimpan informasi sensitif pengguna
 - Hanya menyimpan data analisis yang diperlukan
 
-## 📈 Success Criteria
+## Success Criteria
 
-✅ Sistem berhasil mengklasifikasikan ulasan menjadi Positif, Netral, atau Negatif
+- Sistem berhasil mengklasifikasikan ulasan menjadi Positif, Netral, atau Negatif
+- Pengguna dapat melakukan analisis sentimen secara real-time
+- Confidence score ditampilkan pada hasil prediksi
+- Riwayat analisis tersimpan dan dapat diakses kembali
+- Evaluasi model dapat ditampilkan secara jelas
+- Aplikasi berjalan dengan baik pada lingkungan lokal
+- Waktu prediksi maksimal 3 detik
 
-✅ Pengguna dapat melakukan analisis sentimen secara real-time
-
-✅ Confidence score ditampilkan pada hasil prediksi
-
-✅ Riwayat analisis tersimpan dan dapat diakses kembali
-
-✅ Evaluasi model dapat ditampilkan secara jelas
-
-✅ Aplikasi berjalan dengan baik pada lingkungan lokal
-
-✅ Waktu prediksi maksimal 3 detik
-
-## 🚀 Scalability Strategy
+## Scalability Strategy
 
 ### Future Improvements
 - PostgreSQL Migration
@@ -431,7 +425,7 @@ Dataset Sentiment Analysis Bahasa Indonesia yang telah memiliki label sentimen.
 - Export PDF
 - Mobile Application
 
-## 🌐 Deployment Strategy
+## Deployment Strategy
 
 ### Development Environment
 - **Frontend**: React Development Server (Vite)
@@ -443,7 +437,7 @@ Dataset Sentiment Analysis Bahasa Indonesia yang telah memiliki label sentimen.
 - **Backend**: Render
 - **Database**: PostgreSQL (Future Upgrade)
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Backend Issues
 
@@ -472,7 +466,7 @@ python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
 npm install
 ```
 
-## ⚠️ Known Risks
+## Known Risks
 
 ### Dataset Quality
 Dataset yang kurang bersih dapat menurunkan akurasi model.
