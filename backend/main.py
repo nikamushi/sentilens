@@ -2,6 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from contextlib import asynccontextmanager
+
 from app.database.connection import engine, Base
 from app.api.endpoints import router
 from app.ml.pipeline import load_pipeline
@@ -9,10 +11,17 @@ from app.ml.pipeline import load_pipeline
 # Create DB tables
 Base.metadata.create_all(bind=engine)
 
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print("Starting up SentiLens API Server...")
+    load_pipeline()
+    yield
+
 app = FastAPI(
     title="SentiLens API",
     description="API untuk analisis sentimen ulasan produk berbahasa Indonesia.",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
 
 # Configure CORS
@@ -26,11 +35,6 @@ app.add_middleware(
 
 # Include Router
 app.include_router(router)
-
-@app.on_event("startup")
-def startup_event():
-    print("Starting up SentiLens API Server...")
-    load_pipeline()
 
 @app.get("/")
 def read_root():

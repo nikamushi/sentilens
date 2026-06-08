@@ -81,7 +81,7 @@ def predict_sentiment(review_text: str):
         pos_prob = probs[pos_idx]
         neg_prob = probs[neg_idx]
         
-        if abs(pos_prob - neg_prob) <= 0.20:
+        if abs(pos_prob - neg_prob) <= 0.55:
             predicted_sentiment = 'Netral'
             # Calibrate confidence based on closeness (smaller difference = higher neutral confidence)
             confidence_score = float(1.0 - abs(pos_prob - neg_prob))
